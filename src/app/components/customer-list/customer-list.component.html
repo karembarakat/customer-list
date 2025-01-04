@@ -1,4 +1,25 @@
-<button mat-flat-button>Create New Customer</button>
 <h1 class="text-3xl font-bold underline">
-  Hello world!
+  Customer Mangment
 </h1>
+
+
+<button mat-flat-button [routerLink]="['/create']" routerLinkActive="router-link-active">Create New Customer</button>
+
+<div *ngFor="let customer of customers" class="shadow-sm rounded flex items-center  shadow-black p-2 my-2">
+  <div>
+    {{ customer.name }}
+    {{ customer.email }}
+    {{ customer.phone }}
+  </div>
+  <div class="ms-auto">
+    <button mat-icon-button [routerLink]="'/edit/' + customer._id">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button [routerLink]="'/details/' + customer._id">
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="onDeleteClick(customer)">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+</div>
